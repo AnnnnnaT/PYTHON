@@ -1,12 +1,5 @@
-# 1.Решить задачи, которые не успели решить на семинаре.
-# 2.Треугольник существует только тогда, когда сумма любых двух его сторон больше третьей. Дано a, b, c - стороны предполагаемого треугольника. 
-# Требуется сравнить длину каждого отрезка-стороны с суммой двух других. Если хотя бы в одном случае отрезок окажется больше суммы двух других, 
-# то треугольника с такими сторонами не существует. Отдельно сообщить является ли треугольник разносторонним, равнобедренным или равносторонним.
-# 3. Напишите код, который запрашивает число и сообщает является ли оно простым или составным. Используйте правило для
-# проверки: “Число является простым, если делится нацело только на единицу и на себя”. Сделайте ограничение на ввод 
-# отрицательных чисел и чисел больше 100 тысяч.
 
-
+from random import randint
 
 # 1
 
@@ -44,3 +37,26 @@
 #             print("You havea a prime number")
 # else:
 #     print("Your number is out of range")
+
+# 4. 
+
+# UPPER_LIMIT = 1000
+# attempt = 1
+# num = randint(LOWER_LIMIT, UPPER_LIMIT)
+# while attempt < 11:
+#     user_num = int(input("Input number from 0 to 1000: "))
+#     if user_num != num:
+#         if user_num < num:
+#             print("Attempt ", attempt)
+#             print("Your number is less than ours. Try again!")
+#             print()
+#             attempt+=1
+#         elif user_num > num:
+#             print("Attempt ", attempt)
+#             print("Your number is more than ours. Try again!")
+#             print()
+#             attempt+=1
+#     else: 
+#         print("Attempt ", attempt)
+#         print("You're right, the number is ", user_num)
+# print("Attempts are over.")
