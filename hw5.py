@@ -3,68 +3,38 @@
 # правило: «число является простым, если делится
 # нацело только на единицу и на себя».
 
-def prime_generator(N):
-    primes = []  
-    num = 2 
-    while len(primes) < N:
-        is_prime = True  
-        for prime in primes:
-            if num % prime == 0:
-                is_prime = False
-                break
-        if is_prime:
-            primes.append(num)  
-        num += 1  
+# def prime_gen(n: int):
+#     primes = []  
+#     num = 2 
+#     while len(primes) < n:
+#         num_prime = True  
+#         for prime in primes:
+#             if num % prime == 0:
+#                 num_prime = False
+#                 break
+#         if num_prime:
+#             primes.append(num)  
+#         num += 1  
+#     return primes
 
-    return primes
+# n = int(input("Input number of prime numbers: "))
+# res = prime_gen(n)
+# print(res)
 
-N = 10
-primes = prime_generator(N)
-
-
-[2, 3, 5, 7, 11, 13, 17]
-
-# def check_num(num: int):
-#     for i in range(2,num):
-#         if num % i != 0:
-#             return True
-
-# def gener_func(n: int):
-#     for num in range(2, n+1):
-#         if check_num(num):
-#             yield num
-# print(*gener_func(10))
-
-def is_prime(num):
-    del_ = 2
-    while del_ ** 2 < num and num % del_ != 0:
-        del_ += 1
-    return del_ ** 2 > num
-
-
-def gen_is_prime(number):
-    """Генератор простых чисел от 2 до n"""
-    start = 1
-    while number > 1:
-        start += 1
-        number -= 1
-        if is_prime(start):
-            yield start
-
-
-print(*gen_is_prime(100))
 
 # ✔ Напишите функцию, которая принимает на вход строку —
 # абсолютный путь до файла. Функция возвращает кортеж из трёх
 # элементов: путь, имя файла, расширение файла.
-# C:\Users\User\Desktop\hw1\hw3.py
 
-# file_path = input("Input file's path: ")
 # def convert():
 #         file_path = input("Input file's path: ")
-#         *a, b, c = file_path.split("\\").split(".")                                 
-#         return tuple({f'path: {a}, name: {b}, extension: {c}'})
+#         ext = file_path.split(".") 
+#         *a, name = ext[0].split("\\")
+#         path_ = "\\".join(a)
+#         res = path_, name, ext[1] 
+#         return res
 # print(convert())
+
 
 # ✔ Напишите однострочный генератор словаря, который принимает
 # на вход три списка одинаковой длины: имена str, ставка int,
@@ -80,11 +50,14 @@ print(*gen_is_prime(100))
 # res =  {n : s*float(b.replace('%',''))//100 for n, s, b in zip(names, salary, bonus, strict = False)}
 # print(res)
 
+
 # ✔ Создайте функцию генератор чисел Фибоначчи (см. Википедию).
-# def fibb(n: int):
-#     lst = [item for item in range(1, n+1)]
-#     num = iter(lst)
-#     for i in num:
-#         if num.next().next() == num.next() + i:
-#             yield i
-# print(*fibb(10))
+
+# def fibb():
+#     n = int(input("Input your fibonacci limit: "))
+#     num = 0
+#     num_1 = 1
+#     while num < n:
+#         yield num
+#         num, num_1 = num_1, num + num_1
+# print(*fibb())
