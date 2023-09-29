@@ -1,34 +1,34 @@
-import random
-import math
-from pprint import pp
+# import random
+# import math
+# from pprint import pp
 
 
-# ✔ Какие вещи есть у всех друзей кроме одного
-# и имя того, у кого данная вещь отсутствует
+# # ✔ Какие вещи есть у всех друзей кроме одного
+# # и имя того, у кого данная вещь отсутствует
 
-friends = {'Tom':('food', 'ball', 'pen'), 'Chris': ('ball', 'shirt', 'book'), 'Alex':('coat', 'water', 'pen')}
+# friends = {'Tom':('food', 'ball', 'pen'), 'Chris': ('ball', 'shirt', 'book'), 'Alex':('coat', 'water', 'pen')}
 
 
-everybody_took = list(set(friends['Tom']).intersection(set(friends['Chris'])).intersection(set(friends['Alex'])))
-print(f"Everyone took: {','.join(str(x) for x in everybody_took)}")
+# everybody_took = list(set(friends['Tom']).intersection(set(friends['Chris'])).intersection(set(friends['Alex'])))
+# print(f"Everyone took: {','.join(str(x) for x in everybody_took)}")
 
-print()
+# print()
 
-unique_T = list(set(friends["Tom"]).difference(set(friends["Chris"]).union(set(friends["Alex"]))))
-unique_C = list(set(friends["Chris"]).difference(set(friends["Alex"]).union(set(friends["Tom"]))))
-unique_A = list(set(friends["Alex"]).difference(set(friends["Chris"]).union(set(friends["Tom"]))))
-print(f"Tom's unique things:  {','.join(str(x) for x in unique_T)}")
-print(f"Chris's unique things: {', '.join(str(x) for x in unique_C)} ")
-print(f"Alex's unique things: {', '.join(str(x) for x in unique_A)} ")
+# unique_T = list(set(friends["Tom"]).difference(set(friends["Chris"]).union(set(friends["Alex"]))))
+# unique_C = list(set(friends["Chris"]).difference(set(friends["Alex"]).union(set(friends["Tom"]))))
+# unique_A = list(set(friends["Alex"]).difference(set(friends["Chris"]).union(set(friends["Tom"]))))
+# print(f"Tom's unique things:  {','.join(str(x) for x in unique_T)}")
+# print(f"Chris's unique things: {', '.join(str(x) for x in unique_C)} ")
+# print(f"Alex's unique things: {', '.join(str(x) for x in unique_A)} ")
 
-print()
+# print()
 
-if list((set(friends['Tom']).intersection(set(friends['Alex']))).difference(set(friends['Chris']))):
-    print(f"Chris does'n have {', '.join(str(x) for x in list((set(friends['Tom']).intersection(set(friends['Alex']))).difference(set(friends['Chris']))))}")
-if list((set(friends['Chris']).intersection(set(friends['Alex']))).difference(set(friends['Tom']))):
-    print(f"Tom does'n have {', '.join(str(x) for x in list((set(friends['Chris']).intersection(set(friends['Alex']))).difference(set(friends['Tom']))))}")
-if list((set(friends['Tom']).intersection(set(friends['Chris']))).difference(set(friends['Alex']))):
-    print(f"Alex does'n have {', '.join(str(x) for x in list((set(friends['Tom']).intersection(set(friends['Chris']))).difference(set(friends['Alex']))))}")
+# if list((set(friends['Tom']).intersection(set(friends['Alex']))).difference(set(friends['Chris']))):
+#     print(f"Chris does'n have {', '.join(str(x) for x in list((set(friends['Tom']).intersection(set(friends['Alex']))).difference(set(friends['Chris']))))}")
+# if list((set(friends['Chris']).intersection(set(friends['Alex']))).difference(set(friends['Tom']))):
+#     print(f"Tom does'n have {', '.join(str(x) for x in list((set(friends['Chris']).intersection(set(friends['Alex']))).difference(set(friends['Tom']))))}")
+# if list((set(friends['Tom']).intersection(set(friends['Chris']))).difference(set(friends['Alex']))):
+#     print(f"Alex does'n have {', '.join(str(x) for x in list((set(friends['Tom']).intersection(set(friends['Chris']))).difference(set(friends['Alex']))))}")
 
 
 

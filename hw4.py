@@ -20,7 +20,7 @@
 #2
 
 
-def func(**kwargs):
-    return {str(value) : key for key, value in kwargs.items()}
+# def func(**kwargs):
+#     return {str(value) : key for key, value in kwargs.items()}
 
-print(func(a = "e", b = 7, c = [2,8,9]))
+# print(func(a = "e", b = 7, c = [2,8,9]))

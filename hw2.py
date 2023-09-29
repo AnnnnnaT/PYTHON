@@ -67,28 +67,28 @@ from fractions import Fraction
 # print(f'{num_1} * {num_2} = {res_numerator}/{res_denumerator}')
 
 
-first = input("Input first fraction: ").split("/")
-second = input("Input second fraction: ").split("/")
+# first = input("Input first fraction: ").split("/")
+# second = input("Input second fraction: ").split("/")
 
-num_sum = int(first[0]) * int(second[1]) + int(first[1]) * int(second[0])
-denom_sum = int(first[1]) * int(second[1])
-sum_fract = [num_sum, denom_sum]
+# num_sum = int(first[0]) * int(second[1]) + int(first[1]) * int(second[0])
+# denom_sum = int(first[1]) * int(second[1])
+# sum_fract = [num_sum, denom_sum]
 
-multi_fract = [int(first[0]) * int(second[0]), int(first[1]) * int(second[1])]
+# multi_fract = [int(first[0]) * int(second[0]), int(first[1]) * int(second[1])]
 
-#сокращать
+# #сокращать
 
-a1, b1 = sum_fract
-while b1:
-    a1, b1 = b1, a1 % b1
-a2, b2 = multi_fract
-while b2:
-    a2, b2 = b2, a2 % b2
+# a1, b1 = sum_fract
+# while b1:
+#     a1, b1 = b1, a1 % b1
+# a2, b2 = multi_fract
+# while b2:
+#     a2, b2 = b2, a2 % b2
 
-print(f'{sum_fract[0]}, {sum_fract[1]}, {a1}, {b1}')
-print(f'{sum_fract[0]//a1}/{sum_fract[1]//a1}', f'{multi_fract[0]//a2}/{multi_fract[1]//a2}')
+# print(f'{sum_fract[0]}, {sum_fract[1]}, {a1}, {b1}')
+# print(f'{sum_fract[0]//a1}/{sum_fract[1]//a1}', f'{multi_fract[0]//a2}/{multi_fract[1]//a2}')
 
 
-res_1 = Fraction(f"{first[0]}/{first[1]}")
-res_2 = Fraction(f"{second[0]}/{second[1]}")
-print(res_1 + res_2,res_1 * res_2)
+# res_1 = Fraction(f"{first[0]}/{first[1]}")
+# res_2 = Fraction(f"{second[0]}/{second[1]}")
+# print(res_1 + res_2,res_1 * res_2)
