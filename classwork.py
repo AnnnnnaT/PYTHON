@@ -34,6 +34,8 @@
 
 # ✔ Создайте вручную список с повторяющимися элементами.
 # ✔ Удалите из него все элементы, которые встречаются дважды.
+
+import json
 import random 
 # a = [random.randint(0,10) for _ in range(20)]
 # print(a)
@@ -171,6 +173,7 @@ import random
 #         for i in range (start, stop):
 #             res += lst[i]
 #     return res
+
 
 # lst = [1,7,3, 0, 8, 9, 10]
 # print(do_sum(lst, 0, 3))
@@ -374,3 +377,129 @@ import random
 # ✔ Отсутствие/наличие директории не должно вызывать ошибок в работе функции
 # (добавьте проверки).
 # ✔ Существующие файлы не должны удаляться/изменяться в случае совпадения имён.
+
+# СЕМИНАР 8
+# Напишите функцию, которая в бесконечном цикле
+# запрашивает имя, личный идентификатор и уровень
+# доступа (от 1 до 7).
+# После каждого ввода добавляйте новую информацию в
+# JSON файл.
+# Пользователи группируются по уровню доступа.
+# Идентификатор пользователя выступает ключём для имени.
+# Убедитесь, что все идентификаторы уникальны независимо
+# от уровня доступа.
+# При перезапуске функции уже записанные в файл данные
+# должны сохраняться.
+
+import json
+import os
+import csv
+import pickle
+
+
+PATH_DB = "user_db.json"
+CSV_FILE = "file.csv"
+
+def load_json():
+    if os.path.exists(PATH_DB):
+        with open(PATH_DB, 'r', encoding = "utf-8") as file:
+            data = json.load(file)
+    else:
+        data = {}
+    return data
+
+def input_name():
+    return input("Input name: ")
+
+def input_id(dict_users: dict):
+    list_id = set()
+    for users in dict_users.values():
+        for user in users:
+            for u_id in user:
+                list_id.add(u_id)
+    while True:
+        u_id = input("Input id: ")
+        if u_id not in list_id and u_id.isdigit():
+            return u_id
+        print("Try again!")
+
+def input_lvl():
+    while True:
+        lvl = input("Input level access: ")
+        if lvl.isdigit():
+            if 0 < int(lvl) < 8:
+                return lvl
+        
+def create_users():
+    while True:
+        user_db = load_json()
+        name = input_name()
+        if not name:
+            break
+        u_id = input_id(user_db)
+        lvl = input_lvl()
+        if lvl in user_db:
+            user_db[lvl].append({u_id:name})
+        else:
+            user_db[lvl] = [{u_id:name}]
+            with (
+                open(PATH_DB, "w", encoding = "utf-8") as file_json, \
+                open(CSV_FILE, "w", encoding = "utf-8") as file_csv):   
+                json.dump(user_db, file_json, indent=4, ensure_ascii=False)
+                result = []
+                for lvl, users in user_db.items():
+                    for user in users:
+                        for u_id, name in user.items():
+                            result.append([name, u_id, lvl])
+                csv_writer = csv.writer(file_csv, dialect = "excel", delimiter='|', lineterminator="\n")
+                csv_writer.writerows(result)
+        
+# create_users()
+
+# Напишите функцию, которая сохраняет созданный в
+# прошлом задании файл в формате CSV.
+
+# Прочитайте созданный в прошлом задании csv файл без
+# использования csv.DictReader.
+# Дополните id до 10 цифр незначащими нулями.
+# В именах первую букву сделайте прописной.
+# Добавьте поле хеш на основе имени и идентификатора.
+# Получившиеся записи сохраните в json файл, где каждая строка
+# csv файла представлена как отдельный json словарь.
+# Имя исходного и конечного файлов передавайте как аргументы
+# функции.
+
+def export_csv_to_json(csv_file: str, json_file: str):
+    final_dict = {}
+    with open(csv_file, "r", encoding = "utf-8") as file:
+        data = file.readlines()
+    for i, items in enumerate(data):
+        data[i] = data[i].strip().split("|")
+        data[i][1] = data[i][1].zfill(10)
+        final_dict[hash(data[i][0] + data[i][1])] = data[i]
+    with open(json_file, "w", encoding = "utf-8") as file:
+        json.dump(final_dict, file, indent=4, ensure_ascii = False)
+# export_csv_to_json("file.csv", "new_user_db.json")
+
+
+# Напишите функцию, которая ищет json файлы в указанной
+# директории и сохраняет их содержимое в виде
+# одноимённых pickle файлов.
+
+def json_to_pickle(path: str = os.getcwd()):
+    file_list = []
+    for files in os.walk(path):
+        for file in files[2]:
+            if file.endswith(".json"):
+                file_list.append ((os.path.join(files[0], file),\
+                os.path.join(files[0], file.rsplit(".")[0] + ".pickle")))
+                
+    for file in file_list:
+        with open(file[0], "r", encoding = "utf-8") as json_in:
+            data = json.load(json_in)
+        with open(file[1], "wb") as f_out:
+            pickle.dump(data, f_out)
+            
+# print(json_to_pickle())
+
+# 
