@@ -56,4 +56,4 @@ def dir_size(path: str):
     return size
 
 
-walk_dir()
+# walk_dir(r"C:\Users\User\Desktop\hw1\hw6")
