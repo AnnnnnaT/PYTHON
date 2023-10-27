@@ -36,7 +36,7 @@ def test_id(name, level, id):
     with pytest.raises(ValueError):
         User(name[0], level[2], id[1])
 
-def test_eq_1(name, level, id_):
+def test_eq(name, level, id_):
     user_1 =User(name[0], level[0], id_[0])
     user_2 = User(name[0], level[0], id_[0])
     assert user_1 == user_2
