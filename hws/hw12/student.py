@@ -61,7 +61,7 @@ class Student:
 
     def __str__(self):
         tests_result = "\n".join([f"\t{subj:.<15}: {test}" for subj, test in self.test_average()])
-        return (f'{first_name} {last_name} {patronymic}\nСредняя оценка: {self.mark_average()}\n'
+        return (f'{self.first_name} {self.last_name} {self.patronymic}\nСредняя оценка: {self.mark_average()}\n'
                     f'Результаты тестов:\n{tests_result}\n\n')
 
     def mark_average(self):
